@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+  - name: main
+    database: dw_marts
+    schema: main
+    tables:
+      - name: company_dim
+        columns:
+          - name: company_id
+            tests:
+              - unique
+              - not_null
+      - name: skills_dim
+        columns:
+          - name: skill_id
+            tests:
+              - unique
+              - not_null
+      - name: job_postings_fact
+        columns:
+          - name: job_id
+            tests:
+              - unique
+              - not_null
+          - name: company_id
+            tests:
+              - relationships:
+                  to: source('main', 'company_dim')
+                  field: company_id
+      - name: skills_job_dim
+        columns:
+          - name: skill_id
+            tests:
+              - relationships:
+                  to: source('main', 'skills_dim')
+                  field: skill_id
+          - name: job_id
+            tests:
+              - relationships:
+                  to: source('main', 'job_postings_fact')
+                  field: job_id
