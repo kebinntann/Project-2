@@ -108,7 +108,7 @@ dbt init
 ### Data Warehouse
 The data warehouse implements a star schema with company_dim, skills_dim, job_postings_fact, and skills_job_dim tables.
 
-![Alt Text](Images\1_2_Data_Warehouse.png)
+![Images\1_2_Data_Warehouse.png](Images\1_2_Data_Warehouse.png)
 
 - Python Files: 
     - [load_raw.py](ingestion/load_raw.py) - Extracts CSVs from GCS and load into Snowflake Database
@@ -119,7 +119,7 @@ The data warehouse implements a star schema with company_dim, skills_dim, job_po
 ### Flat Mart
 Denormalized table with all dimensions for ad-hoc queries.
 
-![Alt Text](Images\1_2_Flat_Mart.png)
+![Images\1_2_Flat_Mart.png](Images\1_2_Flat_Mart.png)
 
 - SQL File: 
     - [flat_mart.sql](models\marts\flat_mart\flat_mart.sql) – Builds denormalized table with all dimensions joined
