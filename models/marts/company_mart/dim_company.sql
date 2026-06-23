@@ -1,4 +1,4 @@
-select
+select distinct
     company_id,
     name
 from {{source('main', 'company_dim')}}
