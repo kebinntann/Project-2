@@ -2,7 +2,7 @@
 
 This project follows Luke Barousse's SQL for Data Engineering youtube tutorial video, combined with snowflake + DBT + PowerBI implementation. If you want the full explanation of the methodology of this project, go to his Git Repo. I will mainly be explaining **my own end-to-end process** using snowflake and dbt on top of the tools used in the tutorial
 
-![Alt Text](Images\1_2_Project2_Data_Pipeline.png)
+![Alt Text](Images/1_2_Project2_Data_Pipeline.png)
 
 -----------------------------------
 
@@ -108,7 +108,7 @@ dbt init
 ### Data Warehouse
 The data warehouse implements a star schema with company_dim, skills_dim, job_postings_fact, and skills_job_dim tables.
 
-![Images\1_2_Data_Warehouse.png](Images\1_2_Data_Warehouse.png)
+![1](Images/1_2_Data_Warehouse.png)
 
 - Python Files: 
     - [load_raw.py](ingestion/load_raw.py) - Extracts CSVs from GCS and load into Snowflake Database
@@ -119,7 +119,7 @@ The data warehouse implements a star schema with company_dim, skills_dim, job_po
 ### Flat Mart
 Denormalized table with all dimensions for ad-hoc queries.
 
-![Images\1_2_Flat_Mart.png](Images\1_2_Flat_Mart.png)
+![2](Images/1_2_Flat_Mart.png)
 
 - SQL File: 
     - [flat_mart.sql](models\marts\flat_mart\flat_mart.sql) – Builds denormalized table with all dimensions joined
@@ -129,7 +129,7 @@ Denormalized table with all dimensions for ad-hoc queries.
 ### Skills Mart
 Time-series skill demand analysis with additive measures.
 
-![Alt Text](Images\1_2_Skills_Mart.png)
+![Alt Text](Images/1_2_Skills_Mart.png)
 
 - SQL Files: 
     - [skill_mart](models\marts\skill_mart) – Builds time-series skill demand mart
@@ -140,7 +140,7 @@ Time-series skill demand analysis with additive measures.
 ### Company Mart
 Company hiring trends by role, location, and month
 
-![Alt Text](Images\1_2_Company_Mart.png)
+![Alt Text](Images/1_2_Company_Mart.png)
 
 - SQL Files: 
     - [company_mart](models\marts\company_mart) – Builds company hiring trends mart
@@ -155,4 +155,4 @@ Snowflake replaces MotherDuck as a OLAP database, thus learning it did not requi
 
 Setting up DBT is tedious, downloading packages, updating the [dbt_project.yml](two\dbt_project.yml) to dictate +materialized, and setting up the [sources.yml](models\marts\sources.yml). However the pay off is huge, DBT understands the data lineage and will prevent circular lineages. It also can generate graphs like below to help better understand the data lineage.
 
-![Alt Text](Images\dbt_lineage.png)
+![Alt Text](Images/dbt_lineage.png)
